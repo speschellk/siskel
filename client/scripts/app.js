@@ -22,12 +22,17 @@ var Movies = Backbone.Collection.extend({
 
   initialize: function() {
     // your code here
+    this.listenTo(this, 'change', function() {
+      this.sort();
+    });
   },
 
   comparator: 'title',
 
   sortByField: function(field) {
     // your code here
+    this.comparator = field;
+    this.trigger('change');
   }
 
 });
