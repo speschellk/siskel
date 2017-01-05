@@ -6,6 +6,12 @@ var Movie = Backbone.Model.extend({
 
   toggleLike: function() {
     // your code here
+    var likeState = this.get('like');
+    if (likeState) {
+      this.set('like', false);
+    } else {
+      this.set('like', true);
+    }
   }
 
 });
@@ -59,6 +65,7 @@ var MovieView = Backbone.View.extend({
 
   initialize: function() {
     // your code here
+    this.render();
   },
 
   events: {
@@ -66,7 +73,7 @@ var MovieView = Backbone.View.extend({
   },
 
   handleClick: function() {
-    // your code here
+    this.model.toggleLike();
   },
 
   render: function() {
@@ -80,6 +87,7 @@ var MoviesView = Backbone.View.extend({
 
   initialize: function() {
     // your code here
+    this.render();
   },
 
   render: function() {
